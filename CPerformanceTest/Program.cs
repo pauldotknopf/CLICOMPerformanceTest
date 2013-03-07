@@ -10,50 +10,17 @@ namespace CPerformanceTest
     {
         static void Main(string[] args)
         {
-            var cliTest = new CLIManagedTest();
             Console.WriteLine("CLI..........................");
-            Console.WriteLine("GetWindowsVersion:   Call 1:         Exections:  10000000");
-            var time = TimeTask(() => cliTest.GetWindowsVersion(10000000));
-            Console.WriteLine(time.ToString());
-            Console.WriteLine("GetWindowsVersion:   Call 10000:     Exections:  1");
-            time = TimeTask(() =>
-            {
-                for (var x = 0; x < 10000; x++)
-                {
-                    cliTest.GetWindowsVersion(1);
-                }
-            });
-            Console.WriteLine(time.ToString());
+            var cliTest = new CLIManagedTest();
+            TestMetric(numberOfExecutions => cliTest.GetWindowsVersion(numberOfExecutions));
 
-            var comTest = new COMTestLib.COMManagedTest();
             Console.WriteLine("COM..........................");
-            Console.WriteLine("GetWindowsVersion:   Call 1:         Exections:  10000000");
-            time = TimeTask(() => comTest.GetWindowsVersion(10000000));
-            Console.WriteLine(time.ToString());
-            Console.WriteLine("GetWindowsVersion:   Call 10000:     Exections:  1");
-            time = TimeTask(() =>
-                {
-                    for (var x = 0; x < 10000; x++)
-                    {
-                        comTest.GetWindowsVersion(1);
-                    }
-                });
-            Console.WriteLine(time.ToString());
+            var comTest = new COMTestLib.COMManagedTest();
+            TestMetric(numberOfExecutions => comTest.GetWindowsVersion(numberOfExecutions));
 
-            var cliToNative = new CLIToNativeClass();
             Console.WriteLine("CLI to native................");
-            Console.WriteLine("GetWindowsVersion:   Call 1:         Exections:  10000000");
-            time = TimeTask(() => cliToNative.GetWindowsVersion(10000000));
-            Console.WriteLine(time.ToString());
-            Console.WriteLine("GetWindowsVersion:   Call 10000:     Exections:  1");
-            time = TimeTask(() =>
-            {
-                for (var x = 0; x < 10000; x++)
-                {
-                    cliToNative.GetWindowsVersion(1);
-                }
-            });
-            Console.WriteLine(time.ToString());
+            var cliToNative = new CLIToNativeClass();
+            TestMetric(numberOfExecutions => cliToNative.GetWindowsVersion(numberOfExecutions));
 
             Console.ReadLine();
         }
@@ -65,6 +32,29 @@ namespace CPerformanceTest
             task();
             stopWatch.Stop();
             return TimeSpan.FromMilliseconds(stopWatch.ElapsedMilliseconds);
+        }
+
+        static void TestMetric(Action<int> execute)
+        {
+            Console.WriteLine("     GetWindowsVersion:");
+            Console.WriteLine("         Calls: " + 100000);
+            Console.WriteLine("         Executions: " + 1);
+            var time = TimeTask(() => {
+                for (var x = 0; x < 100000; x++)
+                {
+                    execute(1);
+                }
+            });
+            Console.WriteLine("         Result: " + time.ToString());
+
+            Console.WriteLine("     GetWindowsVersion:");
+            Console.WriteLine("         Calls: " + 1);
+            Console.WriteLine("         Executions: " + 100000000);
+            time = TimeTask(() =>
+            {
+                execute(100000000);
+            });
+            Console.WriteLine("         Result: " + time.ToString());
         }
     }
 }
