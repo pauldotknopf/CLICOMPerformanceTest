@@ -1,0 +1,43 @@
+// COMTest.idl : IDL source for COMTest
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (COMTest.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(CF5E64CD-1892-49E1-831A-8091A2455EAF),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ICOMManagedTest : IDispatch{
+};
+[
+	uuid(2E54094C-794D-44A6-B664-783DA3ABD9E5),
+	version(1.0),
+]
+library COMTestLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(6C3B3132-9A23-4700-A2EB-4897D898E9C4)		
+	]
+	dispinterface _ICOMManagedTestEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(C5E17840-772B-4A41-B3B3-7D7F0EAF397E)		
+	]
+	coclass COMManagedTest
+	{
+		[default] interface ICOMManagedTest;
+		[default, source] dispinterface _ICOMManagedTestEvents;
+	};
+};
+
