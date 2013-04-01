@@ -15,6 +15,7 @@ import "ocidl.idl";
 	pointer_default(unique)
 ]
 interface ICOMManagedTest : IDispatch{
+	[id(1)] HRESULT GetWindowsVersion([in] LONG numberOfExecutions);
 };
 [
 	uuid(2E54094C-794D-44A6-B664-783DA3ABD9E5),

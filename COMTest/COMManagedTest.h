@@ -27,9 +27,7 @@ class ATL_NO_VTABLE CCOMManagedTest :
 	public IDispatchImpl<ICOMManagedTest, &IID_ICOMManagedTest, &LIBID_COMTestLib, /*wMajor =*/ 1, /*wMinor =*/ 0>
 {
 public:
-	CCOMManagedTest()
-	{
-	}
+	CCOMManagedTest();
 
 DECLARE_REGISTRY_RESOURCEID(IDR_COMMANAGEDTEST)
 
@@ -52,14 +50,13 @@ END_CONNECTION_POINT_MAP()
 		return S_OK;
 	}
 
-	void FinalRelease()
-	{
-	}
+	void FinalRelease();
 
 public:
 
 
 
+	STDMETHOD(GetWindowsVersion)(LONG numberOfExecutions);
 };
 
 OBJECT_ENTRY_AUTO(__uuidof(COMManagedTest), CCOMManagedTest)

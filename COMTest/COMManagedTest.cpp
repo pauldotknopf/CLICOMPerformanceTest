@@ -2,7 +2,24 @@
 
 #include "stdafx.h"
 #include "COMManagedTest.h"
+#include "OMNativeClass.h"
+
+COMNativeClass *nativeClass = nullptr;
+
+CCOMManagedTest::CCOMManagedTest()
+{
+	nativeClass = new COMNativeClass();
+}
+
+void CCOMManagedTest::FinalRelease()
+{
+	delete nativeClass;
+	nativeClass = nullptr;
+}
 
 
-// CCOMManagedTest
-
+STDMETHODIMP CCOMManagedTest::GetWindowsVersion(LONG numberOfExecutions)
+{
+	nativeClass->GetWindowsVersion(numberOfExecutions);
+	return S_OK;
+}

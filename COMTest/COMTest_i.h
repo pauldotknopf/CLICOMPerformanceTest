@@ -4,7 +4,7 @@
 
 
  /* File created by MIDL compiler version 8.00.0595 */
-/* at Mon Apr 01 13:32:47 2013
+/* at Mon Apr 01 14:29:35 2013
  */
 /* Compiler settings for COMTest.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0595 
@@ -95,6 +95,9 @@ EXTERN_C const IID IID_ICOMManagedTest;
     ICOMManagedTest : public IDispatch
     {
     public:
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE GetWindowsVersion( 
+            /* [in] */ LONG numberOfExecutions) = 0;
+        
     };
     
     
@@ -153,6 +156,10 @@ EXTERN_C const IID IID_ICOMManagedTest;
             /* [annotation][out] */ 
             _Out_opt_  UINT *puArgErr);
         
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *GetWindowsVersion )( 
+            ICOMManagedTest * This,
+            /* [in] */ LONG numberOfExecutions);
+        
         END_INTERFACE
     } ICOMManagedTestVtbl;
 
@@ -188,6 +195,9 @@ EXTERN_C const IID IID_ICOMManagedTest;
 #define ICOMManagedTest_Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr)	\
     ( (This)->lpVtbl -> Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr) ) 
 
+
+#define ICOMManagedTest_GetWindowsVersion(This,numberOfExecutions)	\
+    ( (This)->lpVtbl -> GetWindowsVersion(This,numberOfExecutions) ) 
 
 #endif /* COBJMACROS */
 

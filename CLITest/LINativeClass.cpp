@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "LINativeClass.h"
-
+#include <Windows.h>
 
 CLINativeClass::CLINativeClass(void)
 {

@@ -10,16 +10,40 @@ namespace CPerformanceTest
     {
         static void Main(string[] args)
         {
-            var test = new CLIManagedTest();
+            var cliTest = new CLIManagedTest();
 
-            Console.WriteLine("GetWindowsVersion:   Call 1:         Exections:  1000000");
-            var time = TimeTask(() => test.GetWindowsVersion(1000000));
+            Console.WriteLine("CLI..........................");
+            Console.WriteLine("GetWindowsVersion:   Call 1:         Exections:  10000000");
+            var time = TimeTask(() => cliTest.GetWindowsVersion(10000000));
             Console.WriteLine(time.ToString());
 
-            Console.WriteLine("GetWindowsVersion:   Call 1000000:   Exections:  1");
-            time = TimeTask(() => test.GetWindowsVersion(1000000));
+            Console.WriteLine("GetWindowsVersion:   Call 10000000:  Exections:  1");
+            time = TimeTask(() =>
+            {
+                for (var x = 0; x < 200; x++)
+                {
+                    cliTest.GetWindowsVersion(1);
+                }
+            });
             Console.WriteLine(time.ToString());
-           
+
+            var comTest = new COMTestLib.COMManagedTest();
+
+            Console.WriteLine("COM..........................");
+            Console.WriteLine("GetWindowsVersion:   Call 1:         Exections:  10000000");
+            time = TimeTask(() => comTest.GetWindowsVersion(10000000));
+            Console.WriteLine(time.ToString());
+
+            Console.WriteLine("GetWindowsVersion:   Call 10000000:  Exections:  1");
+            time = TimeTask(() =>
+                {
+                    for (var x = 0; x < 200; x++)
+                    {
+                        comTest.GetWindowsVersion(1);
+                    }
+                });
+            Console.WriteLine(time.ToString());
+
             Console.ReadLine();
         }
 
