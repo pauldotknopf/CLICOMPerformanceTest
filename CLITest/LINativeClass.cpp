@@ -1,18 +1,17 @@
 #include "stdafx.h"
-#include "OMNativeClass.h"
-#include <Windows.h>
+#include "LINativeClass.h"
 
-COMNativeClass::COMNativeClass(void)
+
+CLINativeClass::CLINativeClass(void)
 {
 }
 
 
-COMNativeClass::~COMNativeClass(void)
+CLINativeClass::~CLINativeClass(void)
 {
 }
 
-
-int COMNativeClass::GetWindowsVersion(int numberOfExecutions)
+int CLINativeClass::GetWindowsVersion(int numberOfExecutions)
 {
 	OSVERSIONINFO osvi;
    

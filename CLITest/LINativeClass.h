@@ -1,9 +1,9 @@
 #pragma once
-class COMNativeClass
+class CLINativeClass
 {
 public:
-	COMNativeClass(void);
-	~COMNativeClass(void);
+	CLINativeClass(void);
+	~CLINativeClass(void);
 	int GetWindowsVersion(int numberOfExecutions);
 };
 

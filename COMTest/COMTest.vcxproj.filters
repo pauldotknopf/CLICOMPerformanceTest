@@ -34,7 +34,7 @@
     <ClCompile Include="COMManagedTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\CLITest\OMNativeClass.cpp">
+    <ClCompile Include="OMNativeClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -60,7 +60,7 @@
     <ClInclude Include="COMManagedTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\CLITest\OMNativeClass.h">
+    <ClInclude Include="OMNativeClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -21,10 +21,10 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LINativeClass.h">
+    <ClInclude Include="LIManagedTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LIManagedTest.h">
+    <ClInclude Include="LINativeClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,10 +35,10 @@
     <ClCompile Include="Stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LINativeClass.cpp">
+    <ClCompile Include="LIManagedTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LIManagedTest.cpp">
+    <ClCompile Include="LINativeClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
